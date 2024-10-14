@@ -1,5 +1,15 @@
 # viem
 
+## 2.21.26
+
+### Patch Changes
+
+- [#2857](https://github.com/wevm/viem/pull/2857) [`b42b1dbe`](https://github.com/wevm/viem/commit/b42b1dbe8aa6ace4eb196a4897aad799842a1645) Thanks [@Zhangnong](https://github.com/Zhangnong)! - Added Shiden chain.
+
+- [#2860](https://github.com/wevm/viem/pull/2860) [`3effd714`](https://github.com/wevm/viem/commit/3effd7143207ffee50406bb77ef870483d30d70f) Thanks [@vpontis](https://github.com/vpontis)! - Updated internal `keepAliveTimer` type.
+
+- [#2858](https://github.com/wevm/viem/pull/2858) [`235ee2cc`](https://github.com/wevm/viem/commit/235ee2cceca00dce5d3c733263bb8eb3cdf1352b) Thanks [@Zhangnong](https://github.com/Zhangnong)! - Added Ultron Mainnet.
+
 ## 2.21.25
 
 ### Patch Changes
