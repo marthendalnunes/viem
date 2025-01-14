@@ -1,5 +1,11 @@
 # viem
 
+## 2.22.9
+
+### Patch Changes
+
+- [#3224](https://github.com/wevm/viem/pull/3224) [`1a235e6cb2b6aaf61c69e1ac4c24f3c4f0e383ac`](https://github.com/wevm/viem/commit/1a235e6cb2b6aaf61c69e1ac4c24f3c4f0e383ac) Thanks [@paouvrard](https://github.com/paouvrard)! - Added NEAR Protocol chains.
+
 ## 2.22.8
 
 ### Patch Changes
