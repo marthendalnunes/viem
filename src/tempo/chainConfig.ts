@@ -4,13 +4,10 @@ import { verifyHash } from '../actions/public/verifyHash.js'
 import { maxUint256 } from '../constants/number.js'
 import type { Chain, ChainConfig as viem_ChainConfig } from '../types/chain.js'
 import { extendSchema } from '../utils/chain/defineChain.js'
-import { defineTransaction } from '../utils/formatters/transaction.js'
-import { defineTransactionReceipt } from '../utils/formatters/transactionReceipt.js'
-import { defineTransactionRequest } from '../utils/formatters/transactionRequest.js'
 import { getAction } from '../utils/getAction.js'
 import type { SerializeTransactionFn } from '../utils/transaction/serializeTransaction.js'
 import type { Account } from './Account.js'
-import * as Formatters from './Formatters.js'
+import { formatters } from './Formatters.js'
 import * as Concurrent from './internal/concurrent.js'
 import * as Transaction from './Transaction.js'
 
@@ -21,18 +18,7 @@ export const chainConfig = {
   extendSchema: extendSchema<{
     feeToken?: TokenId.TokenIdOrAddress | undefined
   }>(),
-  formatters: {
-    transaction: defineTransaction({
-      exclude: ['aaAuthorizationList' as never],
-      format: Formatters.formatTransaction,
-    }),
-    transactionReceipt: defineTransactionReceipt({
-      format: Formatters.formatTransactionReceipt,
-    }),
-    transactionRequest: defineTransactionRequest({
-      format: Formatters.formatTransactionRequest,
-    }),
-  },
+  formatters,
   prepareTransactionRequest: [
     async (r, { phase }) => {
       const request = r as Transaction.TransactionRequest & {

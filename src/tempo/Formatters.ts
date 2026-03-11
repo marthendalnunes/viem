@@ -8,9 +8,19 @@ import {
 } from 'ox/tempo'
 import type { Account as viem_Account } from '../accounts/types.js'
 import { parseAccount } from '../accounts/utils/parseAccount.js'
-import { formatTransaction as viem_formatTransaction } from '../utils/formatters/transaction.js'
-import { formatTransactionReceipt as viem_formatTransactionReceipt } from '../utils/formatters/transactionReceipt.js'
-import { formatTransactionRequest as viem_formatTransactionRequest } from '../utils/formatters/transactionRequest.js'
+import type { ChainFormatters } from '../types/chain.js'
+import {
+  defineTransaction,
+  formatTransaction as viem_formatTransaction,
+} from '../utils/formatters/transaction.js'
+import {
+  defineTransactionReceipt,
+  formatTransactionReceipt as viem_formatTransactionReceipt,
+} from '../utils/formatters/transactionReceipt.js'
+import {
+  defineTransactionRequest,
+  formatTransactionRequest as viem_formatTransactionRequest,
+} from '../utils/formatters/transactionRequest.js'
 import type { Account } from './Account.js'
 import {
   isTempo,
@@ -141,3 +151,16 @@ export function formatTransactionRequest(
       : {}),
   } as never
 }
+
+export const formatters = {
+  transaction: defineTransaction({
+    exclude: ['aaAuthorizationList' as never],
+    format: formatTransaction,
+  }),
+  transactionReceipt: defineTransactionReceipt({
+    format: formatTransactionReceipt,
+  }),
+  transactionRequest: defineTransactionRequest({
+    format: formatTransactionRequest,
+  }),
+} as const satisfies ChainFormatters
